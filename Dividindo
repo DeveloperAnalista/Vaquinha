@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>JavaScript</title>
+  <link rel="stylesheet" href="estilo.css">
+</head>
+
+<body>
+  <form action="" id="cadastro">
+    <label for="valor">Valor (em Reais)</label>
+    <input type="number" name="valor" id="valor" value="120">
+    <label for="nome">Participante</label>
+    <input type="text" name="nome" id="nome" required>
+    <button id="cadastrar">Cadastrar</button>
+  </form>
+  <div id="tabela">
+    <h2>Participantes</h2>
+    <table id="participantes">
+      <thead>
+        <tr>
+          <th>Nome</th>
+          <th>Valor</th>
+          <th>Ação</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+  </div>
+  <script src="scripts.js"></script>
+
+</body>
+
+</html>
+let cadastro = document.getElementById("cadastro");
+cadastro.addEventListener("submit", function(event) {
+    event.preventDefault();
+})
+
+let botao = document.getElementById("cadastrar");
+botao.addEventListener("click", function(event) {
+    insereLinha();
+})
+
+function insereLinha() {
+    let alvo = document.querySelector("#participantes tbody");
+    let nome = document.getElementById("nome");
+    let linha = document.createElement('tr');
+    let celNome = document.createElement('td');
+    let celValor = document.createElement('td');
+    let celAcao = document.createElement('td');
+    celAcao.innerHTML = "Excluir";
+    celAcao.className = "excluir";
+    celAcao.addEventListener("click", function(event) {
+         this.parentElement.remove();
+         atualizaValores();
+    })
+    if(nome.value) {
+        celNome.innerHTML = nome.value;
+        linha.appendChild(celNome);
+        linha.appendChild(celValor);
+        linha.appendChild(celAcao);
+        alvo.appendChild(linha);
+        nome.value = "";
+        atualizaValores();
+    }
+}
+
+function atualizaValores() {
+    let participantes = document.querySelector("#participantes tbody").children;
+    let tabela = document.getElementById('tabela');
+    if(participantes.length){
+        tabela.style.display = "block";
+    }
+    let valor = document.getElementById("valor").value / participantes.length;
+    for(linha of participantes) {
+        linha.children[1].innerHTML = formataMoeda(valor);
+    }
+}
+
+function formataMoeda(valor) {
+	let padraoBR = Intl.NumberFormat("pt-BR", {
+		style: "currency",
+		currency: "BRL",
+	});
+	return padraoBR.format(valor);
+}
+html, body {
+    font-family: Arial, Helvetica, sans-serif;
+}
+body {
+    width: 50%; margin: 2em auto;
+}
+form {
+    background-color: lightgrey;
+    border-color: 1px solid rgb(112, 98, 98);
+    padding: 1em;
+}
+label {
+    display: block;
+}
+let cadastro = document.getElementById("cadastro");
+cadastro.addEventListener("submit", function(event) {
+    event.preventDefault();
+})
+
+let botao = document.getElementById("cadastrar");
+botao.addEventListener("click", function(event) {
+    insereLinha();
+})
+
+function insereLinha() {
+    let alvo = document.querySelector("#participantes tbody");
+    let nome = document.getElementById("nome");
+    let linha = document.createElement('tr');
+    let celNome = document.createElement('td');
+    let celValor = document.createElement('td');
+    let celAcao = document.createElement('td');
+    celAcao.innerHTML = "Excluir";
+    celAcao.className = "excluir";
+    celAcao.addEventListener("click", function(event) {
+         this.parentElement.remove();
+         atualizaValores();
+    })
+    if(nome.value) {
+        celNome.innerHTML = nome.value;
+        linha.appendChild(celNome);
+        linha.appendChild(celValor);
+        linha.appendChild(celAcao);
+        alvo.appendChild(linha);
+        nome.value = "";
+        atualizaValores();
+    }
+}
+
+function atualizaValores() {
+    let participantes = document.querySelector("#participantes tbody").children;
+    let tabela = document.getElementById('tabela');
+    if(participantes.length){
+        tabela.style.display = "block";
+    }
+    let valor = document.getElementById("valor").value / participantes.length;
+    for(linha of participantes) {
+        linha.children[1].innerHTML = formataMoeda(valor);
+    }
+}
+
+function formataMoeda(valor) {
+	let padraoBR = Intl.NumberFormat("pt-BR", {
+		style: "currency",
+		currency: "BRL",
+	});
+	return padraoBR.format(valor);
+}
+html, body {
+    font-family: Arial, Helvetica, sans-serif;
+}
+body {
+    width: 50%; margin: 2em auto;
+}
+form {
+    background-color: lightgrey;
+    border-color: 1px solid rgb(112, 98, 98);
+    padding: 1em;
+}
+label {
+    display: block;
+}
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>JavaScript</title>
+  <link rel="stylesheet" href="estilo.css">
+</head>
+
+<body>
+  <form action="" id="cadastro">
+    <label for="valor">Valor (em Reais)</label>
+    <input type="number" name="valor" id="valor" value="120">
+    <label for="nome">Participante</label>
+    <input type="text" name="nome" id="nome" required>
+    <button id="cadastrar">Cadastrar</button>
+  </form>
+  <div id="tabela">
+    <h2>Participantes</h2>
+    <table id="participantes">
+      <thead>
+        <tr>
+          <th>Nome</th>
+          <th>Valor</th>
+          <th>Ação</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+  </div>
+  <script src="scripts.js"></script>
+
+</body>html, body {
+    font-family: Arial, Helvetica, sans-serif;
+}
+body {
+    width: 50%; margin: 2em auto;
+}
+form {
+    background-color: lightgrey;
+    border-color: 1px solid rgb(112, 98, 98);
+    padding: 1em;
+}
+label {
+    display: block;
+}
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>JavaScript</title>
+  <link rel="stylesheet" href="estilo.css">
+</head>
+
+<body>
+  <form action="" id="cadastro">
+    <label for="valor">Valor (em Reais)</label>
+    <input type="number" name="valor" id="valor" value="120">
+    <label for="nome">Participante</label>
+    <input type="text" name="nome" id="nome" required>
+    <button id="cadastrar">Cadastrar</button>
+  </form>
+  <div id="tabela">
+    <h2>Participantes</h2>
+    <table id="participantes">
+      <thead>
+        <tr>
+          <th>Nome</th>
+          <th>Valor</th>
+          <th>Ação</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+  </div>
+  <script src="scripts.js"></script>
+
+</body>
+
+</html>
+let cadastro = document.getElementById("cadastro");
+cadastro.addEventListener("submit", function(event) {
+    event.preventDefault();
+})
+
+let botao = document.getElementById("cadastrar");
+botao.addEventListener("click", function(event) {
+    insereLinha();
+})
+
+function insereLinha() {
+    let alvo = document.querySelector("#participantes tbody");
+    let nome = document.getElementById("nome");
+    let linha = document.createElement('tr');
+    let celNome = document.createElement('td');
+    let celValor = document.createElement('td');
+    let celAcao = document.createElement('td');
+    celAcao.innerHTML = "Excluir";
+    celAcao.className = "excluir";
+    celAcao.addEventListener("click", function(event) {
+         this.parentElement.remove();
+         atualizaValores();
+    })
+    if(nome.value) {
+        celNome.innerHTML = nome.value;
+        linha.appendChild(celNome);
+        linha.appendChild(celValor);
+        linha.appendChild(celAcao);
+        alvo.appendChild(linha);
+        nome.value = "";
+        atualizaValores();
+    }
+}
+
+function atualizaValores() {
+    let participantes = document.querySelector("#participantes tbody").children;
+    let tabela = document.getElementById('tabela');
+    if(participantes.length){
+        tabela.style.display = "block";
+    }
+    let valor = document.getElementById("valor").value / participantes.length;
+    for(linha of participantes) {
+        linha.children[1].innerHTML = formataMoeda(valor);
+    }
+}
+
+function formataMoeda(valor) {
+	let padraoBR = Intl.NumberFormat("pt-BR", {
+		style: "currency",
+		currency: "BRL",
+	});
+	return padraoBR.format(valor);
+}
+
+</html>
